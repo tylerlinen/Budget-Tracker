@@ -145,7 +145,8 @@ function sendTransaction(isAdding) {
     })
     .catch(err => {
       // fetch failed, so save in indexed db
-      res.status(400).json({ message: err.message })
+      
+      throw new Error("Did not work")
 
       // clear form
       nameEl.value = "";

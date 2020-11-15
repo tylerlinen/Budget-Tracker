@@ -20,6 +20,8 @@ self.addEventListener('install', (event) => {
     );
 });
 
+
+
 self.addEventListener('fetch', (event) => {
     if (event.request.url.includes("/api/")) {
         event.respondWith(
@@ -28,7 +30,6 @@ self.addEventListener('fetch', (event) => {
                     if (response.status === 200) {
                         cache.put(event.request.url, response.clone());
                     }
-
                     return response;
                 })
                     .catch(err => {
