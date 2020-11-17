@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register("./serviceworker.js")
+    navigator.serviceWorker.register("/serviceworker.js")
       .then((reg) => {
         console.log('Service worker registered.', reg);
       });
@@ -145,8 +145,9 @@ function sendTransaction(isAdding) {
     })
     .catch(err => {
       // fetch failed, so save in indexed db
-      
-      throw new Error("Did not work")
+      console.log(transaction)
+        saveRecord(transaction)
+    
 
       // clear form
       nameEl.value = "";

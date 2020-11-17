@@ -10,7 +10,7 @@ const FILES_TO_CACHE = [
 ];
 
 const PRECACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+const DATA_CACHE_NAME = 'data-cache-v1';
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -25,7 +25,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     if (event.request.url.includes("/api/")) {
         event.respondWith(
-            caches.open(RUNTIME).then((cache) => {
+            caches.open(DATA_CACHE_NAME).then((cache) => {
                 return fetch(event.request).then((response) => {
                     if (response.status === 200) {
                         cache.put(event.request.url, response.clone());
